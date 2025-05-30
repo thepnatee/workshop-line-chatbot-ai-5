@@ -10,10 +10,10 @@ import webhookRouter from './routes/webhook'
 
 // import sendMessageRouter from './routes/message'
 
+// import storageRouter from './routes/storage'
 
 // import beaconRouter from './routes/beacon'
 
-// import storageRouter from './routes/storage'
 
 // import mongoeRouter from './routes/mongo'
 
@@ -21,7 +21,7 @@ import webhookRouter from './routes/webhook'
 
 // import bookingRouter from './routes/booking'
 
-import agenticRouter from './routes/agentic'
+// import agenticRouter from './routes/agentic'
 
 // import miniappRouter from './routes/miniapp'
 
@@ -53,13 +53,12 @@ const routes = [
   // { path: '/mention', router: mentionRouter },
   /* Step 3: Message route */
   // { path: '/message', router: sendMessageRouter },
-  /* Step 4: Beacon route */
-  // { path: '/beacon', router: beaconRouter },
-  /* Step 5: Storage route */
+  /* Step 4: Storage route */
   // { path: '/storage', router: storageRouter },
-
-  /* Step 6: MongoDB route */
+  /* Step 5: MongoDB route */
   // { path: '/mongo', router: mongoeRouter },
+  /* Step 6: Beacon route */
+  // { path: '/beacon', router: beaconRouter },
   /* Step 7: Gemini route */
   // { path: '/gemini', router: geminiRouter },
   /* Step 8: Booking route */
