@@ -1,0 +1,43 @@
+{
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsup --watch",
+    "serve": "firebase emulators:start",
+    "deploy": "firebase deploy --only functions"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "dist/index.js",
+  "dependencies": {
+    "@google-cloud/storage": "^7.16.0",
+    "@google/genai": "^1.2.0",
+    "@langchain/community": "^0.3.45",
+    "@langchain/core": "^0.3.57",
+    "@langchain/google-vertexai": "^0.2.10",
+    "@langchain/mongodb": "^0.1.0",
+    "@langchain/openai": "^0.5.11",
+    "axios": "^1.9.0",
+    "cheerio": "^1.0.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "firebase-admin": "^13.4.0",
+    "firebase-functions": "^6.3.2",
+    "firebase-tools": "^14.4.0",
+    "googleapis": "^149.0.0",
+    "langchain": "^0.3.27",
+    "mongodb": "^6.16.0",
+    "node-cache": "^5.1.2",
+    "node-jose": "^2.2.0",
+    "redis": "^5.1.1"
+  },
+  "devDependencies": {
+    "@types/node-cache": "^4.2.5",
+    "@types/node-jose": "^1.1.13",
+    "firebase-functions-test": "^3.4.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "private": true
+}
