@@ -51,7 +51,7 @@ export function validateLineSignature(rawBody: Buffer | string, signature: strin
  */
 export const getProfile = async (userId: string): Promise<LineProfile> => {
   try {
-    const url = `${process.env.LINE_MESSAGING_API}/profile/${userId}`
+    const url = `${process.env.LINE_MESSAGING_API}/v2/bot/profile/${userId}`
     const response: AxiosResponse<LineProfile> = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${process.env.LINE_MESSAGING_ACCESS_TOKEN}`,
@@ -108,7 +108,7 @@ export const getProfileCache = async (userId: string): Promise<LineProfile> => {
       return JSON.parse(cached) as LineProfile
     }
 
-    const url = `${process.env.LINE_MESSAGING_API}/profile/${userId}`
+    const url = `${process.env.LINE_MESSAGING_API}/v2/bot/profile/${userId}`
     const response: AxiosResponse<LineProfile> = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${process.env.LINE_MESSAGING_ACCESS_TOKEN}`,
@@ -133,7 +133,7 @@ export const getProfileCache = async (userId: string): Promise<LineProfile> => {
  */
 export const getProfileByGroup = async (groupId: string, userId: string): Promise<LineProfile> => {
   try {
-    const url = `${process.env.LINE_MESSAGING_API}/group/${groupId}/member/${userId}`
+    const url = `${process.env.LINE_MESSAGING_API}/v2/bot/group/${groupId}/member/${userId}`
     const response: AxiosResponse<LineProfile> = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${process.env.LINE_MESSAGING_ACCESS_TOKEN}`,
@@ -154,7 +154,7 @@ export const getProfileByGroup = async (groupId: string, userId: string): Promis
  */
 export const groupInfo = async (groupId: string): Promise<any> => {
   try {
-    const url = `${process.env.LINE_MESSAGING_API}/group/${groupId}/summary/`
+    const url = `${process.env.LINE_MESSAGING_API}/v2/bot/group/${groupId}/summary/`
     const response: AxiosResponse<any> = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${process.env.LINE_MESSAGING_ACCESS_TOKEN}`,
@@ -176,7 +176,7 @@ export const groupInfo = async (groupId: string): Promise<any> => {
 export const isAnimationLoading = async (userId: string): Promise<AnimationLoadingResponse> => {
   try {
 
-    const url = `${process.env.LINE_MESSAGING_API}/chat/loading/start`
+    const url = `${process.env.LINE_MESSAGING_API}/v2/bot/chat/loading/start`
     const payload = {
       chatId: userId,
       loadingSeconds: 10, // allowed values: 5,10,15,...,60
@@ -206,7 +206,7 @@ export const isAnimationLoading = async (userId: string): Promise<AnimationLoadi
  * Limitation: ต้อง reply ภายใน 1 นาทีหลังได้รับ event, ส่งได้สูงสุด 5 ข้อความต่อครั้ง
  */
 export const reply = async (token: string, payload: any[]): Promise<any> => {
-  const url = `${process.env.LINE_MESSAGING_API}/message/reply`
+  const url = `${process.env.LINE_MESSAGING_API}/v2/bot/message/reply`
   const response: AxiosResponse<any> = await axios.post(
     url,
     { replyToken: token, messages: payload },
@@ -227,7 +227,7 @@ export const reply = async (token: string, payload: any[]): Promise<any> => {
  */
 export const replyWithStateless = async (token: string, payload: any[]): Promise<any> => {
   const accessToken = await issueMessagingStatelessChannelAccessToken()
-  const url = `${process.env.LINE_MESSAGING_API}/message/reply`
+  const url = `${process.env.LINE_MESSAGING_API}/v2/bot/message/reply`
   const response: AxiosResponse<any> = await axios.post(
     url,
     { replyToken: token, messages: payload },
@@ -248,7 +248,7 @@ export const replyWithStateless = async (token: string, payload: any[]): Promise
  */
 export const getContent = async (messageId: string): Promise<Buffer> => {
   try {
-    const url = `${process.env.LINE_DATA_MESSAGING_API}/message/${messageId}/content`
+    const url = `${process.env.LINE_DATA_MESSAGING_API}/v2/bot/message/${messageId}/content`
 
     console.log('url', url)
     const response: AxiosResponse<Buffer> = await axios.get(url, {
@@ -455,7 +455,7 @@ export const broadcastConsumption = async (payload: BroadcastPayload): Promise<v
     const remainingQuota = quotaMessage.value - quotaConsumption.totalUsage
 
     if (remainingQuota > numberOfFollowers.followers) {
-      const url = `${process.env.LINE_MESSAGING_API}/message/broadcast`
+      const url = `${process.env.LINE_MESSAGING_API}/v2/bot/message/broadcast`
       const response: AxiosResponse = await axios.post(url, payload, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -478,7 +478,7 @@ export const broadcastConsumption = async (payload: BroadcastPayload): Promise<v
 }
 
 async function getQuota(accessToken: string): Promise<QuotaResponse> {
-  const url = `${process.env.LINE_MESSAGING_API}/message/quota`
+  const url = `${process.env.LINE_MESSAGING_API}/v2/bot/message/quota`
   const response: AxiosResponse<QuotaResponse> = await axios.get(url, {
     headers: { Authorization: `Bearer ${accessToken}` },
   })
@@ -486,7 +486,7 @@ async function getQuota(accessToken: string): Promise<QuotaResponse> {
 }
 
 async function getConsumption(accessToken: string): Promise<ConsumptionResponse> {
-  const url = `${process.env.LINE_MESSAGING_API}/message/quota/consumption`
+  const url = `${process.env.LINE_MESSAGING_API}/v2/bot/message/quota/consumption`
   const response: AxiosResponse<ConsumptionResponse> = await axios.get(url, {
     headers: { Authorization: `Bearer ${accessToken}` },
   })
@@ -495,7 +495,7 @@ async function getConsumption(accessToken: string): Promise<ConsumptionResponse>
 
 async function getNumberOfFollowers(accessToken: string): Promise<FollowerResponse> {
   const currentDate = new Date().toISOString().slice(0, 10).replace(/-/g, '')
-  const url = `${process.env.LINE_MESSAGING_API}/insight/followers?date=${currentDate}`
+  const url = `${process.env.LINE_MESSAGING_API}/v2/bot/insight/followers?date=${currentDate}`
   const response: AxiosResponse<FollowerResponse> = await axios.get(url, {
     headers: { Authorization: `Bearer ${accessToken}` },
   })
@@ -511,7 +511,7 @@ export const multicast = async (payload: MulticastPayload): Promise<any> => {
   try {
     const accessToken = await issueMessagingStatelessChannelAccessToken()
     console.log("accessToken",accessToken)
-    const url = `${process.env.LINE_MESSAGING_API}/message/multicast`
+    const url = `${process.env.LINE_MESSAGING_API}/v2/bot/message/multicast`
 
     const response: AxiosResponse = await axios.post(url, payload, {
       headers: {
@@ -539,7 +539,7 @@ export const multicast = async (payload: MulticastPayload): Promise<any> => {
 export const pushWithStateless = async (userId: string, messages: LineMessage[]): Promise<any> => {
   try {
     const accessToken = await issueTokenv2_1()
-    const url = `${process.env.LINE_MESSAGING_API}/message/push`
+    const url = `${process.env.LINE_MESSAGING_API}/v2/bot/message/push`
 
     const response: AxiosResponse = await axios.post(
       url,
@@ -578,7 +578,7 @@ export const pushWithCustomAggregation = async (
 ): Promise<any> => {
   try {
     const accessToken = await issueTokenv2_1()
-    const url = `${process.env.LINE_MESSAGING_API}/message/push`
+    const url = `${process.env.LINE_MESSAGING_API}/v2/bot/message/push`
 
     const response: AxiosResponse = await axios.post(
       url,
@@ -616,7 +616,7 @@ export const pushWithCustomAggregation = async (
 export const richmenuSetIndividual = async (userId: string, richmenuId: string): Promise<void> => {
   try {
     const accessToken = await issueMessagingStatelessChannelAccessToken()
-    const url = `${process.env.LINE_MESSAGING_API}/user/${userId}/richmenu/${richmenuId}`
+    const url = `${process.env.LINE_MESSAGING_API}/v2/bot/user/${userId}/richmenu/${richmenuId}`
     await axios.post(
       url,
       {},
