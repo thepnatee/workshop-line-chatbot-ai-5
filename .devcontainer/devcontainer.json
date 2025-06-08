@@ -1,17 +1,10 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-  "name": "Node.js & TypeScript",
+  "name": "Workshop LINE Chatbot x AI Codespace",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bullseye",
-  "features": {
-    "ghcr.io/devcontainers-extra/features/firebase-cli:2": {},
-    "ghcr.io/devcontainers/features/java:1": {},
-    "ghcr.io/itsmechlark/features/redis-server:1": {}
-  },
+  "image": "ghcr.io/iamprompt-gh/line-workshop-codespace:latest",
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [],
+  "forwardPorts": [5001, 5173],
 
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": {
@@ -26,7 +19,4 @@
       "extensions": ["esbenp.prettier-vscode"]
     }
   }
-
-  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-  // "remoteUser": "root"
 }
