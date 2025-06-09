@@ -77,6 +77,12 @@ router.post('/mongo', async (request: Request, response: Response) => {
           const res = await insertDataBeacon(beaconData)
           if (res) {
             console.log('Beacon event inserted into MongoDB:', beaconData)
+            await reply(event.replyToken!, [
+              {
+                type: 'text',
+                text: `📡 Welcome! You just entered the beacon zone (${event.beacon?.hwid}).`,
+              } as Message,
+            ])
           } else {
             console.error('Failed to insert beacon event into MongoDB')
           }

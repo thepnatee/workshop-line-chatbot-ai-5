@@ -73,6 +73,10 @@
       <button v-if="isMiniApp" @click="miniAppRegister" class="btn">Register</button>
       <button v-if="isMiniApp" @click="miniAppNotify" class="btn">Notify</button>
     </div>
+
+    <div class="button-group">
+      <button v-if="isMiniApp" @click="createShortcutOnHomeScreen" class="btn">Create Shortcut</button>
+    </div>
   </div>
 </template>
 
@@ -331,6 +335,16 @@ export default {
         }
       }
     },
+
+    async createShortcutOnHomeScreen() {
+      if (!this.isMiniApp) {
+        return
+      }
+
+      await liff.createShortcutOnHomeScreen({
+        url: await liff.permanentLink.createUrlBy(window.location.href)
+      })
+    }
   },
 }
 </script>
