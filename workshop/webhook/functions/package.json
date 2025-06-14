@@ -27,7 +27,7 @@
     "firebase-tools": "^14.4.0",
     "googleapis": "^149.0.0",
     "langchain": "^0.3.27",
-    "mongodb": "^6.16.0",
+    "mongodb": "^6.17.0",
     "node-cache": "^5.1.2",
     "node-jose": "^2.2.0",
     "redis": "^5.1.1"
@@ -40,4 +40,5 @@
     "typescript": "^5.8.3"
   },
   "private": true
+
 }

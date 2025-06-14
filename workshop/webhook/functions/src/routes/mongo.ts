@@ -22,8 +22,8 @@ import { Member } from '@/types/mongo'
 const router = express.Router()
 
 // =========================
-//  MongoDB Route
-// =========================
+// MongoDB Route
+//=========================
 
 router.post('/', async (request: Request, response: Response) => {
   /*
@@ -113,24 +113,24 @@ async function handleMessage(message: Message, replyToken: string, groupId: stri
           timestamp: getCurrentDateTimeString(),
           url: publicUrl,
         })
-        /* step uncomment*/
-        // await saveImageMetadataToMongoDB({
-        //   groupId,
-        //   messageId: id,
-        //   type: message.type,
-        //   size: buffer.length,
-        //   timestamp: getCurrentDateTimeString(),
-        //   url: publicUrl,
-        // })
+        //* step uncomment*/
+         await saveImageMetadataToMongoDB({
+           groupId,
+           messageId: id,
+           type: message.type,
+           size: buffer.length,
+           timestamp: getCurrentDateTimeString(),
+           url: publicUrl,
+         })
 
-         /* step uncomment*/
-        // await reply(replyToken, [
-        //   {
-        //     type: 'text',
-        //     text: `เราได้รับไฟล์ ${message.type} แล้ว ขนาด: ${buffer.length} bytes \n นามสกุล: ${extension} \n คุณสามารถดาวน์โหลดได้ที่: ${publicUrl}`,
-        //     quoteToken: `${message.quoteToken}`,
-        //   },
-        // ])
+        // * step uncomment*/
+         await reply(replyToken, [
+           {
+             type: 'text',
+             text: `เราได้รับไฟล์ ${message.type} แล้ว ขนาด: ${buffer.length} bytes \n นามสกุล: ${extension} \n คุณสามารถดาวน์โหลดได้ที่: ${publicUrl}`,
+             quoteToken: `${message.quoteToken}`,
+           },
+         ])
       }
 
       break

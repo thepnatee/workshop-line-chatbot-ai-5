@@ -6,24 +6,24 @@ import express from 'express'
 /* Step 1: Webhook route */
 import webhookRouter from './routes/webhook'
 
-// import mentionRouter from './routes/mention'
+import mentionRouter from './routes/mention'
 
-// import sendMessageRouter from './routes/message'
+ import sendMessageRouter from './routes/message'
 
-// import storageRouter from './routes/storage'
+ import storageRouter from './routes/storage'
 
 // import beaconRouter from './routes/beacon'
 
 
-// import mongoeRouter from './routes/mongo'
+import mongoeRouter from './routes/mongo'
 
-// import geminiRouter from './routes/gemini'
+ import geminiRouter from './routes/gemini'
 
-// import bookingRouter from './routes/booking'
+ import bookingRouter from './routes/booking'
 
-// import agenticRouter from './routes/agentic'
+ import agenticRouter from './routes/agentic'
 
-// import miniappRouter from './routes/miniapp'
+ import miniappRouter from './routes/miniapp'
 
 // Set global options for Firebase Functions
 setGlobalOptions({
@@ -50,23 +50,23 @@ const routes = [
   /* Step 1: Webhook route */
   { path: '/webhook', router: webhookRouter },
   /* Step 2: Mention route */
-  // { path: '/mention', router: mentionRouter },
+  { path: '/mention', router: mentionRouter },
   /* Step 3: Message route */
-  // { path: '/message', router: sendMessageRouter },
+   { path: '/message', router: sendMessageRouter },
   /* Step 4: Storage route */
-  // { path: '/storage', router: storageRouter },
+   { path: '/storage', router: storageRouter },
   /* Step 5: MongoDB route */
-  // { path: '/mongo', router: mongoeRouter },
-  /* Step 6: Beacon route */
+  { path: '/mongo', router: mongoeRouter },
+  //* Step 6: Beacon route */
   // { path: '/beacon', router: beaconRouter },
   /* Step 7: Gemini route */
-  // { path: '/gemini', router: geminiRouter },
+   { path: '/gemini', router: geminiRouter },
   /* Step 8: Booking route */
-  // { path: '/booking', router: bookingRouter },
+   { path: '/booking', router: bookingRouter },
   /* Step 9: Agentic route */
-  // { path: '/agent', router: agenticRouter },
+   { path: '/agent', router: agenticRouter },
   /* Step 10: Miniapp route */
-  // { path: '/miniapp', router: miniappRouter },
+   { path: '/miniapp', router: miniappRouter },
 ]
 
 // Register routes dynamically

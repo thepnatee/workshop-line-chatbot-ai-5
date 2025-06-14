@@ -267,113 +267,113 @@ async function handleMessage(message: Message, replyToken: string, userId: strin
 
       /* Step Uncomment line 245-351 the following lines to handle specific text commands */
       
-      // if (message.text === 'profile') {
-      //   const profile = await getProfile(userId)
-      //   console.log('🙋‍♂️ User Profile:', profile)
+      if (message.text === 'profile') {
+        const profile = await getProfile(userId)
+        console.log('🙋‍♂️ User Profile:', profile)
 
-      //   await reply(replyToken, [
-      //     {
-      //       type: 'text',
-      //       text: 'สวัสดีครับคุณ ' + profile.displayName,
-      //     },
-      //   ])
-      // } else if (message.text === 'menu') {
-      //   await reply(replyToken, [
-      //     {
-      //       type: 'text',
-      //       text: 'Select your favorite food category or send me your location!',
-      //       quickReply: {
-      //         items: [
-      //           {
-      //             type: 'action',
-      //             imageUrl: 'https://example.com/sushi.png',
-      //             action: {
-      //               type: 'message',
-      //               label: 'Sushi',
-      //               text: 'Sushi',
-      //             },
-      //           },
-      //           {
-      //             type: 'action',
-      //             imageUrl: 'https://example.com/sushi.png',
-      //             action: {
-      //               type: 'postback',
-      //               label: 'Postback',
-      //               data: 'action=buy&itemid=111',
-      //               text: 'Buy',
-      //             },
-      //           },
-      //           {
-      //             type: 'action',
-      //             action: {
-      //               type: 'camera',
-      //               label: 'Camera',
-      //             },
-      //           },
-      //           {
-      //             type: 'action',
-      //             action: {
-      //               type: 'cameraRoll',
-      //               label: 'Camera Roll',
-      //             },
-      //           },
-      //           {
-      //             type: 'action',
-      //             action: {
-      //               type: 'location',
-      //               label: 'Send location',
-      //             },
-      //           },
-      //           {
-      //             type: 'action',
-      //             action: {
-      //               type: 'uri',
-      //               label: 'Phone order',
-      //               uri: 'tel:00000000',
-      //             },
-      //           },
-      //           {
-      //             type: 'action',
-      //             action: {
-      //               type: 'uri',
-      //               label: 'Recommend to friends',
-      //               uri: 'https://line.me/R/nv/recommendOA/@linedevelopers',
-      //             },
-      //           },
-      //         ],
-      //       },
-      //     },
-      //   ])
-      // } else if (message.text === 'service') {
-      //   await reply(replyToken, [service()])
-      // } else if (message.text === 'bill') {
-      //   await reply(replyToken, [bill()])
-      // } else if (message.text === 'queue') {
-      //   await reply(replyToken, [queue()])
-      // } else if (message.text === 'booking') {
-      //   await reply(replyToken, [booking()])
-      // } else if (message.text === 'report') {
-      //   await reply(replyToken, [report()])
-      // } else if (message.text === 'vdo') {
-      //   await reply(replyToken, [vdo()])
-      // } else if (message.text === 'profile2') {
-      //   const profile = await getProfileCache(userId)
-      //   console.log('🙋‍♂️ User Profile2:', profile)
-      //   await reply(replyToken, [
-      //     {
-      //       type: 'text',
-      //       text: 'สวัสดีครับคุณ ' + profile.displayName,
-      //     },
-      //   ])
-      // } else {
-      //   await reply(replyToken, [
-      //     {
-      //       type: 'text',
-      //       text: `${JSON.stringify(message)}`,
-      //       quoteToken: `${message.quoteToken}`,
-      //     },
-      //   ])
-      // }
+        await reply(replyToken, [
+          {
+            type: 'text',
+            text: 'สวัสดีครับคุณ ' + profile.displayName,
+          },
+        ])
+      } else if (message.text === 'menu') {
+        await reply(replyToken, [
+          {
+            type: 'text',
+            text: 'Select your favorite food category or send me your location!',
+            quickReply: {
+              items: [
+                {
+                  type: 'action',
+                  imageUrl: 'https://example.com/sushi.png',
+                  action: {
+                    type: 'message',
+                    label: 'Sushi',
+                    text: 'Sushi',
+                  },
+                },
+                {
+                  type: 'action',
+                  imageUrl: 'https://example.com/sushi.png',
+                  action: {
+                    type: 'postback',
+                    label: 'Postback',
+                    data: 'action=buy&itemid=111',
+                    text: 'Buy',
+                  },
+                },
+                {
+                  type: 'action',
+                  action: {
+                    type: 'camera',
+                    label: 'Camera',
+                  },
+                },
+                {
+                  type: 'action',
+                  action: {
+                    type: 'cameraRoll',
+                    label: 'Camera Roll',
+                  },
+                },
+                {
+                  type: 'action',
+                  action: {
+                    type: 'location',
+                    label: 'Send location',
+                  },
+                },
+                {
+                  type: 'action',
+                  action: {
+                    type: 'uri',
+                    label: 'Phone order',
+                    uri: 'tel:00000000',
+                  },
+                },
+                {
+                  type: 'action',
+                  action: {
+                    type: 'uri',
+                    label: 'Recommend to friends',
+                    uri: 'https://line.me/R/nv/recommendOA/@linedevelopers',
+                  },
+                },
+              ],
+            },
+          },
+        ])
+      } else if (message.text === 'service') {
+        await reply(replyToken, [service()])
+      } else if (message.text === 'bill') {
+        await reply(replyToken, [bill()])
+      } else if (message.text === 'queue') {
+        await reply(replyToken, [queue()])
+      } else if (message.text === 'booking') {
+        await reply(replyToken, [booking()])
+      } else if (message.text === 'report') {
+        await reply(replyToken, [report()])
+      } else if (message.text === 'vdo') {
+        await reply(replyToken, [vdo()])
+      } else if (message.text === 'profile2') {
+        const profile = await getProfileCache(userId)
+        console.log('🙋‍♂️ User Profile2:', profile)
+        await reply(replyToken, [
+          {
+            type: 'text',
+            text: 'สวัสดีครับคุณ ' + profile.displayName,
+          },
+        ])
+      } else {
+        await reply(replyToken, [
+          {
+            type: 'text',
+            text: `${JSON.stringify(message)}`,
+            quoteToken: `${message.quoteToken}`,
+          },
+        ])
+      }
       break
 
     case 'image':
